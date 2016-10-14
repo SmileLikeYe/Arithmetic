@@ -1,0 +1,67 @@
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        rlist = []
+        curNode1 = l1
+        curNode2 = l2
+        carryOver = 0
+
+        while 1:
+        	tmpVal = curNode1.val + curNode2.val + carryOver
+        	if tmpVal > 9:
+        		curVal = tmpVal - 10
+        		carryOver = 1
+        	else:
+        		curVal = tmpVal
+        		carryOver = 0
+        	rlist.append(curVal)
+
+        	if curNode1.next or curNode2.next:
+	        	if curNode1.next:
+	        		curNode1 = curNode1.next
+	        	else:
+	        		curNode1 = ListNode(0)
+	        	if curNode2.next:
+	        		curNode2 = curNode2.next
+	        	else:
+	        		curNode2 = ListNode(0)
+	        else:
+	        	break
+
+        if carryOver:
+
+        	rlist.append(carryOver)
+        
+        return rlist
+
+
+# s = Solution()
+# l11 = ListNode(9)
+# l12 = ListNode(9)
+# l13 = ListNode(6)
+# l11.next = l12
+# l12.next = l13
+
+
+# l21 = ListNode(9)
+# l22 = ListNode(9)
+# l23 = ListNode(9)
+# l21.next = l22
+# l22.next = l23
+
+
+# l = s.addTwoNumbers(l11,l21)
+# print  l
+
+
+
+
